@@ -29,11 +29,18 @@ export default function commandIndexController(
   detailSystems,
   commands) {
   $scope.setWindowTitle('commands');
-
+  $scope.filterHidden = false;
   $scope.dtOptions = DTOptionsBuilder.newOptions()
     .withOption('order', [4, 'asc'])
     .withOption('autoWidth', false)
+    //.withOption('hiddenContainer', true)
     .withBootstrap();
+
+  $scope.hiddenComparator = function(expected, actual){
+    return actual || !expected;
+  };
+
+
 
   $scope.stateParams = function(entry) {
     return {
@@ -74,6 +81,7 @@ export default function commandIndexController(
           id: command.id,
           name: command.name,
           system: system.name,
+          hidden: command.hidden,
           version: system.version,
           description: command.description || 'No Description Provided',
         });
