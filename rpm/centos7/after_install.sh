@@ -1,7 +1,8 @@
 APP_NAME="beer-garden"
-GROUP=$APP_NAME
-USER=$APP_NAME
 APP_HOME="/opt/${APP_NAME}"
+
+USER="beergarden"
+GROUP="beergarden"
 
 CONFIG_HOME="$APP_HOME/conf"
 LOG_HOME="$APP_HOME/log"
@@ -11,12 +12,12 @@ PLUGIN_HOME="$APP_HOME/plugins"
 
 CONFIG_FILE="${CONFIG_HOME}/config.yaml"
 LOG_CONFIG="${CONFIG_HOME}/logging.yaml"
-LOG_FILE="$LOG_HOME/beer-garden.log"
+LOG_FILE="$LOG_HOME/beergarden.log"
 
 case "$1" in
     1)
         # This is an initial install
-        # Create the beer-garden group/user if they do not exist
+        # Create the beergarden group/user if they do not exist
         /usr/bin/getent group $GROUP > /dev/null || /usr/sbin/groupadd -r $GROUP
         /usr/bin/getent passwd $USER > /dev/null || /usr/sbin/useradd -r -d $APP_HOME -s /sbin/nologin -g $GROUP $USER
 

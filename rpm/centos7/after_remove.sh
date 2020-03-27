@@ -1,18 +1,22 @@
 APP_NAME="beer-garden"
 APP_HOME="/opt/${APP_NAME}"
 
+USER="beergarden"
+GROUP="beergarden"
+
 CONFIG_HOME="$APP_HOME/conf"
 LOG_HOME="$APP_HOME/log"
 
 CONFIG_FILE="${CONFIG_HOME}/config.yaml"
 LOG_CONFIG="${CONFIG_HOME}/logging.yaml"
-LOG_FILE="$LOG_HOME/beer-garden.log"
+LOG_FILE="$LOG_HOME/beergarden.log"
 
 case "$1" in
     0)
         # This is an uninstallation
         # Remove the user
-        /usr/sbin/userdel $APP_NAME
+        /usr/sbin/userdel $USER
+        /usr/sbin/groupdel $GROUP
     ;;
     1)
         # This is an upgrade.

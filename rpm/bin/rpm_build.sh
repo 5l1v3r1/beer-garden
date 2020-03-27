@@ -149,7 +149,7 @@ create_rpm() {
     if [[ "$RELEASE" == "7" ]]; then
         args+=(-d "openssl-libs >= 1:1.0.2a-1")
 
-        service_files=("beer-garden.service")
+        service_files=("beergarden.service")
         for file in "${service_files[@]}"
         do
             cp "$SCRIPT_BASE/$file" "/lib/systemd/system/"
