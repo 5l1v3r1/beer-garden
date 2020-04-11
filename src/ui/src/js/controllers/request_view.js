@@ -88,7 +88,7 @@ export default function requestViewController(
     let rawOutput = $scope.data.output;
 
     try {
-      if (rawOutput === undefined || rawOutput == null) {
+      if (rawOutput == undefined || rawOutput === 'null') {
         rawOutput = 'null';
       } else if ($scope.data.output_type == 'HTML') {
         $scope.htmlOutput = rawOutput;
